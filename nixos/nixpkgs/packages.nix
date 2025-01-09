@@ -6,7 +6,7 @@
     kdePackages.kleopatra
     vesktop
     google-chrome
-    vscodium-fhs
+    vscode-fhs
     vlc
 
     # rider

@@ -23,6 +23,8 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
+    ./configs/shellAliases.nix
+
     ./nixpkgs/boot.nix
     ./nixpkgs/packages.nix
     ./nixpkgs/steam.nix
