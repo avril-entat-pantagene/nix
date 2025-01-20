@@ -44,9 +44,11 @@
       llvmPackages_12.lld
 
       # testing frameworks
-      criterion
+      
       gtest
       gcovr
+      python311Full
+      python311Packages.pytest
 
       # misc
       bintools
@@ -83,7 +85,20 @@
       # steam
       #bumblebee
       #glxinfo
+
+      # EPITA Net.
+      gns3-gui
+      gns3-server
+      inetutils
+      pkgsi686Linux.dynamips
+      tigervnc
+      vpcs
+      aria2
+
+
   ];
+
+  virtualisation.virtualbox.host.enable = true;
 
   environment.variables = {
       ACLOCAL_PATH = "${pkgs.autoconf-archive}/share/aclocal:${pkgs.autoconf}/share/aclocal:${pkgs.automake}/share/aclocal";
