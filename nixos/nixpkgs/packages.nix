@@ -8,6 +8,7 @@
     google-chrome
     vscode-fhs
     vlc
+    alacritty
 
     # rider
     dotnet-sdk_7
@@ -23,6 +24,7 @@
     lunar-client
 
     # build systems
+      criterion
       autoconf
       autoconf-archive
       automake
@@ -71,6 +73,7 @@
       strace
       tk
       valgrind
+      bear
 
       # lcov dependencies
       perlPackages.JSON
@@ -94,6 +97,9 @@
       tigervnc
       vpcs
       aria2
+
+      xdot
+      nixfmt-rfc-style
 
 
   ];

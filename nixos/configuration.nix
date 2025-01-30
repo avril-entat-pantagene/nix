@@ -7,7 +7,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -25,10 +26,12 @@
 
     ./configs/shellAliases.nix
 
+    #./nixpkgs/zsh.nix
     ./nixpkgs/boot.nix
     ./nixpkgs/packages.nix
     ./nixpkgs/steam.nix
     ./nixpkgs/docker.nix
+    ./nixpkgs/direnv.nix
 
     # Import home-manager's NixOS module
     #inputs.home-manager.nixosModules.home-manager
@@ -60,26 +63,27 @@
     };
   };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Opinionated: disable global registry
-      #flake-registry = "";
-      ## Workaround for https://github.com/NixOS/nix/issues/9574
-      #nix-path = config.nix.nixPath;
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        # Enable flakes and new 'nix' command
+        experimental-features = "nix-command flakes";
+        # Opinionated: disable global registry
+        #flake-registry = "";
+        ## Workaround for https://github.com/NixOS/nix/issues/9574
+        #nix-path = config.nix.nixPath;
+      };
+      # Opinionated: disable channels
+      #channel.enable = false;
+
+      # Opinionated: make flake registry and nix path match flake inputs
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
-    # Opinionated: disable channels
-    #channel.enable = false;
 
-    # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
-
-  
   # Enable networking
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -110,7 +114,6 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "fr";
@@ -129,7 +132,7 @@
   };
 
   # GPU fix
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
@@ -137,7 +140,7 @@
     powerManagement.finegrained = false;
     open = false;
   };
-  hardware.opengl.enable = true;  # Enables OpenGL support
+  hardware.opengl.enable = true; # Enables OpenGL support
 
   hardware.nvidia.prime = {
     offload = {
@@ -168,6 +171,12 @@
     #media-session.enable = true;
   };
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+      Experimental = true;
+    };
+  };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
@@ -178,18 +187,21 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
-      extraGroups = [ "networkmanager" "wheel" "audio" "plugdev" "docker"];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "audio"
+        "plugdev"
+        "docker"
+      ];
     };
   };
-
-  programs.direnv.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
     wget
     tree
     git
-    criterion
   ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.
