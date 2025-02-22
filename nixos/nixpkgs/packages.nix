@@ -1,6 +1,7 @@
 { pkgs, lib, ... }: {
 
   users.users.baptiste.packages = with pkgs; [
+    home-manager
     kdePackages.kate
     krita
     kdePackages.kleopatra
@@ -9,10 +10,6 @@
     vscode-fhs
     vlc
     alacritty
-
-    # rider
-    dotnet-sdk_7
-    jetbrains.rider
 
     # tools
     git
