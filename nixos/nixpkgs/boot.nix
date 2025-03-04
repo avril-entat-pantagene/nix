@@ -5,17 +5,23 @@
   config,
   outputs,
   ...
-}: {
-  
-  nixpkgs.config.packageOverrides = pkgs: rec { plytheme = pkgs.callPackage ./plymouth/PlyTheme.nix {}; };
+}:
+{
+
+  nixpkgs.config.packageOverrides = pkgs: rec {
+    plytheme = pkgs.callPackage ./plymouth/PlyTheme.nix { };
+  };
   environment.systemPackages = with pkgs; [ plytheme ];
 
   # Bootloader
   boot = {
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
-    loader.timeout = 0;
+
+    loader = {
+      timeout = 3;
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
+    tmp.cleanOnBoot = true; # Clear /tmp during boot
 
     initrd.systemd.enable = true; # Enables systemd services in the initial ramdisk (initrd)
     plymouth = {
@@ -39,9 +45,7 @@
       "udev.log_priority=3"
       "fbcon=nodefer" # no asus logo ?
     ];
-    
 
   };
 
 }
-

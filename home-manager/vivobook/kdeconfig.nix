@@ -204,8 +204,8 @@
       "kwin"."view_actual_size" = "Meta+0";
       "kwin"."view_zoom_in" = [
         "Meta++"
-        "Meta+\x3d\\,Meta++"
-        "Meta+\x3d\\,Zoom In"
+        "Meta+x3d\\,Meta++"
+        "Meta+x3d\\,Zoom In"
       ];
       "kwin"."view_zoom_out" = "Meta+-";
       "mediacontrol"."mediavolumedown" = "none\\,\\,Media volume down";
@@ -320,9 +320,9 @@
       "kwinrc"."Desktops"."Rows" = 1;
       "kwinrc"."Tiling"."padding" = 4;
       "kwinrc"."Tiling/94d867e7-851a-56a1-b3e3-32252a9e0cc0"."tiles" =
-        "{\"layoutDirection\":\"horizontal\",\"tiles\":\x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}\x5d}";
+        ''{"layoutDirection":"horizontal","tiles":x5b{"width":0.25},{"width":0.5},{"width":0.25}x5d}'';
       "kwinrc"."Tiling/aab133d1-0049-5bc2-9558-2317fba134dc"."tiles" =
-        "{\"layoutDirection\":\"horizontal\",\"tiles\":\x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}\x5d}";
+        ''{"layoutDirection":"horizontal","tiles":x5b{"width":0.25},{"width":0.5},{"width":0.25}x5d}'';
       "kwinrc"."Xwayland"."Scale" = 2;
       "plasma-localerc"."Formats"."LANG" = "en_US.UTF-8";
       "plasmanotifyrc"."Applications/vesktop"."Seen" = true;
@@ -332,6 +332,11 @@
       "spectaclerc"."GuiConfig"."captureMode" = 0;
       "spectaclerc"."ImageSave"."translatedScreenshotsFolder" = "Screenshots";
       "spectaclerc"."VideoSave"."translatedScreencastsFolder" = "Screencasts";
+    };
+    session = {
+      sessionRestore = {
+        restoreOpenApplicationsOnLogin = "startWithEmptySession";
+      };
     };
     dataFile = {
       "dolphin/view_properties/global/.directory"."Settings"."HiddenFilesShown" = true;

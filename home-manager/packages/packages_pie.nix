@@ -19,4 +19,5 @@
   # (pkgs.writeShellScriptBin "my-hello" ''
   #   echo "Hello, ${config.home.username}!"
   # '')
+  pkgs.asciiquarium-transparent
 ]

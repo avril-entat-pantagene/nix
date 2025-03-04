@@ -15,18 +15,9 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      plasma-manager,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
-    in
-    {
+  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
+    let inherit (self) outputs;
+    in {
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild switch --flake .#baptiste'
       nixosConfigurations = {

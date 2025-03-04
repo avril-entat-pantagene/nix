@@ -3,13 +3,16 @@
   users.users.baptiste.packages = with pkgs; [
     home-manager
     kdePackages.kate
+    kdePackages.plasma-browser-integration
     krita
     kdePackages.kleopatra
     vesktop
     google-chrome
     vscode-fhs
     vlc
-    alacritty
+    kitty
+    jetbrains.clion
+    jetbrains.idea-ultimate
 
     # tools
     git
@@ -21,91 +24,90 @@
     lunar-client
 
     # build systems
-      criterion
-      autoconf
-      autoconf-archive
-      automake
-      cmake
-      gnumake
-      meson
-      ninja
+    criterion
+    autoconf
+    autoconf-archive
+    automake
+    cmake
+    gnumake
+    meson
+    ninja
 
-      # compilers
-      # Putting gcc before clang means that `which cc` will be `gcc` instead of
-      # `clang`
-      gcc
-      # gcc-unwrapped with lower priority than gcc so `gcov` is available and
-      # `gcc` is still wrapped
-      (lib.setPrio (gcc.meta.priority + 1) gcc-unwrapped)
+    # compilers
+    # Putting gcc before clang means that `which cc` will be `gcc` instead of
+    # `clang`
+    gcc
+    # gcc-unwrapped with lower priority than gcc so `gcov` is available and
+    # `gcc` is still wrapped
+    (lib.setPrio (gcc.meta.priority + 1) gcc-unwrapped)
 
-      clang_12
-      llvmPackages_12.llvm
-      llvmPackages_12.lld
+    clang_12
+    llvmPackages_12.llvm
+    llvmPackages_12.lld
 
-      # testing frameworks
-      
-      gtest
-      gcovr
-      python311Full
-      python311Packages.pytest
+    # testing frameworks
 
-      # misc
-      bintools
-      capstone
-      check
-      checkbashisms
-      clang-tools
-      ctags
-      dash
-      doxygen
-      fakeroot
-      flex
-      gdb
-      lcov
-      ltrace
-      pkg-config
-      readline
-      rr
-      shellcheck
-      strace
-      tk
-      valgrind
-      bear
+    gtest
+    gcovr
+    python311Full
+    python311Packages.pytest
 
-      # lcov dependencies
-      perlPackages.JSON
-      perlPackages.PerlIOgzip
+    # misc
+    bintools
+    capstone
+    check
+    checkbashisms
+    clang-tools
+    ctags
+    dash
+    doxygen
+    fakeroot
+    flex
+    gdb
+    lcov
+    ltrace
+    pkg-config
+    readline
+    rr
+    shellcheck
+    strace
+    tk
+    valgrind
+    bear
 
-      # vcs
-      git
-      pre-commit
-      subversion
-      tig
+    # lcov dependencies
+    perlPackages.JSON
+    perlPackages.PerlIOgzip
 
-      # steam
-      #bumblebee
-      #glxinfo
+    # vcs
+    git
+    pre-commit
+    subversion
+    tig
 
-      # EPITA Net.
-      gns3-gui
-      gns3-server
-      inetutils
-      pkgsi686Linux.dynamips
-      tigervnc
-      vpcs
-      aria2
+    # steam
+    #bumblebee
+    #glxinfo
 
-      xdot
-      nixfmt-rfc-style
+    # EPITA Net.
+    gns3-gui
+    gns3-server
+    inetutils
+    pkgsi686Linux.dynamips
+    tigervnc
+    vpcs
+    aria2
 
+    xdot
+    nixfmt-rfc-style
 
   ];
 
   virtualisation.virtualbox.host.enable = true;
 
   environment.variables = {
-      ACLOCAL_PATH = "${pkgs.autoconf-archive}/share/aclocal:${pkgs.autoconf}/share/aclocal:${pkgs.automake}/share/aclocal";
-    };
-
+    ACLOCAL_PATH =
+      "${pkgs.autoconf-archive}/share/aclocal:${pkgs.autoconf}/share/aclocal:${pkgs.automake}/share/aclocal";
+  };
 
 }

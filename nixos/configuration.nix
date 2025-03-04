@@ -24,6 +24,9 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
+    # Import specialization
+    ./specialisationKDE.nix
+
     #./nixpkgs/zsh.nix
     ./nixpkgs/boot.nix
     ./nixpkgs/packages.nix
@@ -104,30 +107,9 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "fr";
-    variant = "oss_nodeadkeys";
-  };
-
   # Configure console keymap
   console.keyMap = "fr";
 
-  boot = {
-    loader = {
-      efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
-    };
-    tmp.cleanOnBoot = true; # Clear /tmp during boot
-  };
 
   # GPU fix
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -214,6 +196,15 @@
       PasswordAuthentication = false;
     };
   };
+
+  # Optimize NixOs
+  #boot.loader.systemd-boot.configurationLimit = 10;
+  #nix.gc = {
+  #  automatic = true;
+  #  dates = "weekly";
+  #  options = "--delete-older-than 1w";
+  #};
+  #nix.settings.auto-optimise-store = true;
 
   # --------------------------------------------------------------
   # This value determines the NixOS release from which the default
