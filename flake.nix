@@ -15,12 +15,40 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
-    let inherit (self) outputs;
-    in {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+    in
+    {
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild switch --flake .#baptiste'
       nixosConfigurations = {
+
+        baptiste = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          # > Our main nixos configuration file <
+          modules = [
+            ./nixos/configuration.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.users.baptiste = import ./home-manager/vivobook/home.nix;
+
+              # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
+            }
+          ];
+        };
+
         vivobook_cf = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           # > Our main nixos configuration file <

@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
 
   users.users.baptiste.packages = with pkgs; [
     home-manager
@@ -14,11 +15,20 @@
     jetbrains.clion
     jetbrains.idea-ultimate
 
+    # Stat
+    mission-center
+    gpustat
+
     # tools
     git
     gh
     unzip
     sl
+    ncdu
+
+    # nix
+    cachix
+    devenv
 
     # -- Game --
     lunar-client
@@ -106,8 +116,7 @@
   virtualisation.virtualbox.host.enable = true;
 
   environment.variables = {
-    ACLOCAL_PATH =
-      "${pkgs.autoconf-archive}/share/aclocal:${pkgs.autoconf}/share/aclocal:${pkgs.automake}/share/aclocal";
+    ACLOCAL_PATH = "${pkgs.autoconf-archive}/share/aclocal:${pkgs.autoconf}/share/aclocal:${pkgs.automake}/share/aclocal";
   };
 
 }

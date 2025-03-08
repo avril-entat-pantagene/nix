@@ -24,9 +24,6 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
-    # Import specialization
-    ./specialisationKDE.nix
-
     #./nixpkgs/zsh.nix
     ./nixpkgs/boot.nix
     ./nixpkgs/packages.nix
@@ -85,6 +82,14 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
+  # services = {
+  #   supergfxd.enable = true;
+  #   asusd = {
+  #     enable = true;
+  #     enableUserService = true;
+  #   };
+  # };
+
   # Enable networking
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -110,15 +115,27 @@
   # Configure console keymap
   console.keyMap = "fr";
 
+  # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
+  services.xserver.enable = true;
+  # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "fr";
+    variant = "oss_nodeadkeys";
+  };
 
   # GPU fix
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-    open = false;
+    open = true;
+    nvidiaSettings = true;
   };
   hardware.opengl.enable = true; # Enables OpenGL support
 
@@ -127,6 +144,7 @@
       enable = true;
       enableOffloadCmd = true;
     };
+
     # Make sure to use the correct Bus ID values for your system!
     nvidiaBusId = "PCI:1:0:0";
     amdgpuBusId = "PCI:4:0:0";
@@ -160,7 +178,6 @@
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
-    # FIXME: Replace with your username
     baptiste = {
       isNormalUser = true;
       description = "Baptiste ENTAT-PANTAGENE";
@@ -183,28 +200,6 @@
     tree
     git
   ];
-
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    settings = {
-      # Opinionated: forbid root login through SSH.
-      PermitRootLogin = "no";
-      # Opinionated: use keys only.
-      # Remove if you want to SSH using passwords
-      PasswordAuthentication = false;
-    };
-  };
-
-  # Optimize NixOs
-  #boot.loader.systemd-boot.configurationLimit = 10;
-  #nix.gc = {
-  #  automatic = true;
-  #  dates = "weekly";
-  #  options = "--delete-older-than 1w";
-  #};
-  #nix.settings.auto-optimise-store = true;
 
   # --------------------------------------------------------------
   # This value determines the NixOS release from which the default

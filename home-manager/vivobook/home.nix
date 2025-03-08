@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./kdeconfig.nix ];
+  #imports = [ ./kdeconfig.nix ];
+  imports = [
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "baptiste";
@@ -18,8 +21,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages =
-    import ../packages/packages_vivobook.nix { inherit pkgs config; };
+  home.packages = import ../packages/packages_vivobook.nix { inherit pkgs config; };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -54,6 +56,20 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+  };
+
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    # TODO add your custom bashrc here
+    bashrcExtra = ''
+      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+    '';
+
+    # set some aliases, feel free to add more or remove some
+    shellAliases = {
+      antoine = "nix-shell -p lolcat fastfetch --run 'fastfetch | lolcat'";
+    };
   };
 
   # Let Home Manager install and manage itself.
