@@ -22,7 +22,7 @@
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = true;
     };
-    tmp.cleanOnBoot = true; # Clear /tmp during boot
+    #tmp.cleanOnBoot = true; # Clear /tmp during boot
 
     initrd.systemd.enable = true; # Enables systemd services in the initial ramdisk (initrd)
     plymouth = {

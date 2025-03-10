@@ -3,17 +3,26 @@
 
   users.users.baptiste.packages = with pkgs; [
     home-manager
-    kdePackages.kate
+    kdePackages.kleopatra
     kdePackages.plasma-browser-integration
     krita
-    kdePackages.kleopatra
     vesktop
     google-chrome
-    vscode-fhs
+
     vlc
     kitty
-    jetbrains.clion
-    jetbrains.idea-ultimate
+
+    # Paper
+    libreoffice
+
+    # Ide
+    vscode-fhs
+    kdePackages.kate
+    #jetbrains.clion
+    #jetbrains.idea-ultimate
+
+    # Soft
+    ganttproject-bin
 
     # Stat
     mission-center
@@ -25,6 +34,7 @@
     unzip
     sl
     ncdu
+    usbutils
 
     # nix
     cachix
