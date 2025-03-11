@@ -63,12 +63,13 @@
     enableCompletion = true;
     # TODO add your custom bashrc here
     bashrcExtra = ''
+      export PS1='$?$(tput setaf 211)!$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput sgr0) $(tput setaf 199)\u$(tput sgr0)$(tput setaf 211)@$(tput setaf 6)\W$(tput setaf 211)\\$$(tput sgr0) '
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
     '';
 
     # set some aliases, feel free to add more or remove some
     shellAliases = {
-      antoine = "nix-shell -p lolcat fastfetch --run 'fastfetch | lolcat'";
+      fetch = "nix-shell -p lolcat fastfetch --run 'fastfetch | lolcat'";
     };
   };
 

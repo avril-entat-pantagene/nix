@@ -18,8 +18,8 @@
     # Ide
     vscode-fhs
     kdePackages.kate
-    #jetbrains.clion
-    #jetbrains.idea-ultimate
+    jetbrains.clion
+    jetbrains.idea-ultimate
 
     # Soft
     ganttproject-bin
