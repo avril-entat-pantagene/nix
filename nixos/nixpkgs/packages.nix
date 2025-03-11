@@ -10,7 +10,7 @@
     google-chrome
 
     vlc
-    kitty
+    #kitty
 
     # Paper
     libreoffice

@@ -19,4 +19,7 @@
   # (pkgs.writeShellScriptBin "my-hello" ''
   #   echo "Hello, ${config.home.username}!"
   # '')
+
+  pkgs.dotacat
+  pkgs.fastfetch
 ]
