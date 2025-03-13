@@ -5,6 +5,7 @@
     home-manager
     kdePackages.kleopatra
     kdePackages.plasma-browser-integration
+    kdePackages.filelight
     krita
     vesktop
     google-chrome
@@ -14,6 +15,7 @@
 
     # Paper
     libreoffice
+    zim
 
     # Ide
     vscode-fhs

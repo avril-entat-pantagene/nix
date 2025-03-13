@@ -60,7 +60,7 @@
   #  /etc/profiles/per-user/baptiste/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   programs.kitty = lib.mkForce {
@@ -97,12 +97,14 @@
     };
   };
 
+  #export PS1='$(tput setaf 211)!$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput sgr0) $(tput setaf 199)\u$(tput sgr0)$(tput setaf 211)@$(tput setaf 6)\W$(tput setaf 33) (^･ω･^)$(tput sgr0)$ '
+
   programs.bash = {
     enable = true;
     enableCompletion = true;
     # TODO add your custom bashrc here
     bashrcExtra = ''
-      export PS1='$(tput setaf 211)!$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput sgr0) $(tput setaf 199)\u$(tput sgr0)$(tput setaf 211)@$(tput setaf 6)\W$(tput setaf 211)\\$$(tput sgr0) '
+      export PS1='$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput setaf 211)!$(tput setaf 6)\W$(tput setaf 33) (^･ω･^)$(tput sgr0)$ '
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
 
       alias '?'='echo $?'
@@ -110,7 +112,12 @@
 
     # set some aliases, feel free to add more or remove some
     shellAliases = {
+      nrsb = "nixos-rebuild switch --flake .#baptiste";
       fetch = "fastfetch | dotacat";
+      ls = "ls -A --color=auto";
+      grep = "grep --color -n";
+      gf = "git fetch";
+      gs = "git status && pre-commit";
     };
   };
 
