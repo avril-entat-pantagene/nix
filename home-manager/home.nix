@@ -1,10 +1,19 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  imports = [
+    ./packages.nix
+    ./shell.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "baptiste";
-  home.homeDirectory = "/home/TODO";
+  home.homeDirectory = "/home/baptiste";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -14,10 +23,6 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = import ../packages/packages_pie.nix { inherit pkgs config; };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -51,7 +56,7 @@
   #  /etc/profiles/per-user/baptiste/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.

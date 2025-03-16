@@ -8,11 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
 
   outputs =
@@ -20,7 +15,6 @@
       self,
       nixpkgs,
       home-manager,
-      plasma-manager,
       ...
     }@inputs:
     let
@@ -42,7 +36,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.baptiste = import ./home-manager/vivobook/home.nix;
+              home-manager.users.baptiste = import ./home-manager/home.nix;
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
             }
@@ -60,16 +54,6 @@
         vivobook_hm = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            inputs.plasma-manager.homeManagerModules.plasma-manager
-            ./home-manager/vivobook/home.nix
-          ];
-        };
-
-        pie_hm = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home-manager/PIE/home.nix ];
         };
       };
     };
