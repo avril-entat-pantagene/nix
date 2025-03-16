@@ -46,4 +46,7 @@ func_pushtag() {
 alias save="func_save"
 alias mdd="func_pushtag"
 
+# Startup
+kitten icat --align left /home/baptiste/nix/assets/ian.png
+
 eval $(thefuck --alias f)

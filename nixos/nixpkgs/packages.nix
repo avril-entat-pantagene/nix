@@ -3,22 +3,23 @@
 
   users.users.baptiste.packages = with pkgs; [
     home-manager
-    kdePackages.kleopatra
-    kdePackages.plasma-browser-integration
-    kdePackages.filelight
-    krita
+
     vesktop
     google-chrome
 
     vlc
-    anytype
 
     # Fonts
     nerdfonts
 
     # Paper
+    bc
+    krita
     libreoffice
     zim
+    anytype
+    ganttproject-bin
+    gimp
 
     # Ide
     vscode-fhs
@@ -26,12 +27,11 @@
     jetbrains.clion
     jetbrains.idea-ultimate
 
-    # Soft
-    ganttproject-bin
-
     # Stat
     mission-center
     gpustat
+    htop
+    kdePackages.filelight
 
     # tools
     git
@@ -120,10 +120,6 @@
     pre-commit
     subversion
     tig
-
-    # steam
-    #bumblebee
-    #glxinfo
 
     # EPITA Net.
     gns3-gui

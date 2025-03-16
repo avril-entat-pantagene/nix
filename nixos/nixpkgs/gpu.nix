@@ -4,7 +4,6 @@
   lib,
   ...
 }:
-
 with pkgs;
 let
   patchDesktop =
