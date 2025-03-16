@@ -55,13 +55,7 @@
       "•" = "ls -A --color=auto";
     };
 
-    bashrcExtra = ''
-      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
-      alias '?'='echo $?'
-
-      #export PS1='$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput setaf 211)!$(tput setaf 6)\W$(tput setaf 211)|$(tput setaf 6)$(git branch --show-current 2>/dev/null) $(tput setaf 33)(^･ω･^)$(tput sgr0)$ '
-      eval $(thefuck --alias f)
-    '';
+    bashrcExtra = builtins.readFile ./bashrcExtra.sh;
   };
 
   programs.starship = {
