@@ -22,4 +22,5 @@
 
   pkgs.dotacat
   pkgs.fastfetch
+  pkgs.thefuck
 ]

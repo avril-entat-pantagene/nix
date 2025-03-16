@@ -118,7 +118,7 @@
       alias '?'='echo $?'
 
       #export PS1='$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput setaf 211)!$(tput setaf 6)\W$(tput setaf 211)|$(tput setaf 6)$(git branch --show-current 2>/dev/null) $(tput setaf 33)(^･ω･^)$(tput sgr0)$ '
-
+      eval $(thefuck --alias f)
     '';
   };
 
