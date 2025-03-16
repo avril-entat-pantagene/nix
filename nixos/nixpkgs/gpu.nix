@@ -20,6 +20,5 @@ in
 {
   environment.systemPackages = with pkgs; [
     (GPUOffloadApp steam "steam")
-    (GPUOffloadApp lunar-client "lunarclient")
   ];
 }

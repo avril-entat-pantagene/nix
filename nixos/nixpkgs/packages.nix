@@ -11,7 +11,10 @@
     google-chrome
 
     vlc
-    #kitty
+    anytype
+
+    # Fonts
+    nerdfonts
 
     # Paper
     libreoffice
@@ -39,7 +42,6 @@
     usbutils
 
     # nix
-    cachix
     devenv
 
     # -- Game --
@@ -96,6 +98,18 @@
     tk
     valgrind
     bear
+
+    # Tiger
+    boost
+    re-flex
+    bison
+    libxslt
+    libtool
+    perl
+    swig4
+    clang_multi
+    libllvm
+    multiStdenv.cc
 
     # lcov dependencies
     perlPackages.JSON
