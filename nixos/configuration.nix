@@ -138,7 +138,7 @@
     open = true;
     nvidiaSettings = true;
   };
-  hardware.opengl.enable = true; # Enables OpenGL support
+  hardware.graphics.enable = true; # Enables graphics support
 
   hardware.nvidia.prime = {
     offload = {
