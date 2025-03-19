@@ -5,7 +5,10 @@
     home-manager
 
     vesktop
+
+    # Browser
     google-chrome
+    tor-browser
 
     vlc
 
@@ -18,8 +21,10 @@
     libreoffice
     zim
     anytype
+    affine
     ganttproject-bin
     gimp
+    vim-full
 
     # Ide
     vscode-fhs
