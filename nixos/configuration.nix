@@ -31,6 +31,7 @@
     ./nixpkgs/docker.nix
     ./nixpkgs/direnv.nix
     ./nixpkgs/gpu.nix
+    ./nixpkgs/OOM.nix
 
     # Import home-manager's NixOS module
     #inputs.home-manager.nixosModules.home-manager

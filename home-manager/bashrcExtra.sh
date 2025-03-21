@@ -1,5 +1,3 @@
-alias '?'='echo $?'
-
 #export PS1='$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput setaf 211)!$(tput setaf 6)\W$(tput setaf 211)|$(tput setaf 6)$(git branch --show-current 2>/dev/null) $(tput setaf 33)(^･ω･^)$(tput sgr0)$ '
 
 func_GitPush() {
@@ -48,6 +46,6 @@ alias push="func_GitPush"
 alias mdd="func_pushtag"
 
 # Startup
-kitten icat --align left /home/baptiste/nix/assets/kitty_icon_small.png
+kitten icat --align left /home/baptiste/nix/assets/catboy_small.jpg
 
 eval $(thefuck --alias f)
