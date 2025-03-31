@@ -46,6 +46,6 @@ alias push="func_GitPush"
 alias mdd="func_pushtag"
 
 # Startup
-kitten icat --align left /home/baptiste/nix/assets/catboy_small.jpg
+#kitten icat --align left /home/baptiste/nix/assets/catboy_small.jpg
 
 eval $(thefuck --alias f)

@@ -7,17 +7,31 @@
 }:
 {
   # OOM configuration:
-  systemd = {
-    # Create a separate slice for nix-daemon that is
-    # memory-managed by the userspace systemd-oomd killer
-    slices."nix-daemon".sliceConfig = {
-      ManagedOOMMemoryPressure = "kill";
-      ManagedOOMMemoryPressureLimit = "50%";
-    };
-    services."nix-daemon".serviceConfig.Slice = "nix-daemon.slice";
 
-    # If a kernel-level OOM event does occur anyway,
-    # strongly prefer killing nix-daemon child processes
-    services."nix-daemon".serviceConfig.OOMScoreAdjust = 1000;
+  # Slice to limit CPU and memory hogs
+  # DOCS https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html
+  # DOCS https://discourse.nixos.org/t/nix-build-ate-my-ram/35752?u=yajo
+  systemd.slices.anti-hungry.sliceConfig = {
+    CPUAccounting = true;
+    CPUQuota = "50%";
+    MemoryAccounting = true; # Allow to control with systemd-cgtop
+    MemoryHigh = "50%";
+    MemoryMax = "75%";
   };
+
+  systemd.services.nix-daemon.serviceConfig.Slice = "anti-hungry.slice";
+
+  # Avoid freezing the system
+  services.earlyoom = {
+    enable = true;
+    enableNotifications = true; # Dangerous for more than 1 hacker per PC
+  };
+
+  systemd.oomd = {
+    enable = true;
+    enableRootSlice = true;
+    enableSystemSlice = true;
+    enableUserSlices = true;
+  };
+
 }

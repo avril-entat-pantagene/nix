@@ -39,6 +39,21 @@
     # '';
   };
 
+  programs.plasma = {
+    enable = true;
+
+    workspace = {
+      # clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
+      # lookAndFeel = "org.kde.breezedark.desktop";
+      cursor = {
+        #theme = "Bibata-Modern-Ice";
+        size = 18;
+      };
+      # iconTheme = "Papirus-Dark";
+      # wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
+    };
+  };
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell

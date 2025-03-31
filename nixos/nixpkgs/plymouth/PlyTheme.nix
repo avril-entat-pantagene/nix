@@ -1,8 +1,8 @@
 { stdenv, fetchurl }:
 stdenv.mkDerivation rec {
-  pname = "plymouth-vinyl-theme";
+  pname = "plymouthsmoothbrainkitty";
   version = "1.0";
-  src = ./PlTBaptiste1.tar.gz;
+  src = ./plymouthsmoothbrainkitty.tar.gz;
 
   dontConfigure = true;
   dontBuild = true;
@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/share/plymouth/themes/
     tar -xvf $src -C $out/share/plymouth/themes/
-    substituteInPlace $out/share/plymouth/themes/PlTBaptiste1/*.plymouth --replace '@ROOT@' "$out/share/plymouth/themes/PlTBaptiste1/"
+    substituteInPlace $out/share/plymouth/themes/plymouthsmoothbrainkitty/*.plymouth --replace '@ROOT@' "$out/share/plymouth/themes/plymouthsmoothbrainkitty/"
 
     runHook postInstall
   '';

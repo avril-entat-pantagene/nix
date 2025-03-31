@@ -27,11 +27,13 @@
     #./nixpkgs/zsh.nix
     ./nixpkgs/boot.nix
     ./nixpkgs/packages.nix
+    ./nixpkgs/packages-unstable.nix
     ./nixpkgs/steam.nix
     ./nixpkgs/docker.nix
     ./nixpkgs/direnv.nix
     ./nixpkgs/gpu.nix
     ./nixpkgs/OOM.nix
+    ./nixpkgs/polkit.nix
 
     # Import home-manager's NixOS module
     #inputs.home-manager.nixosModules.home-manager

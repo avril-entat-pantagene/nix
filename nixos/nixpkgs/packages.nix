@@ -2,13 +2,6 @@
 {
 
   users.users.baptiste.packages = with pkgs; [
-    home-manager
-
-    vesktop
-
-    # Browser
-    google-chrome
-    tor-browser
 
     vlc
 
@@ -20,8 +13,6 @@
     krita
     libreoffice
     zim
-    anytype
-    affine
     ganttproject-bin
     gimp
     vim-full
@@ -29,8 +20,7 @@
     # Ide
     vscode-fhs
     kdePackages.kate
-    jetbrains.clion
-    jetbrains.idea-ultimate
+    jetbrains-toolbox
 
     # Stat
     mission-center
@@ -45,12 +35,13 @@
     sl
     ncdu
     usbutils
+    rustdesk
+
+    # ACDC
+    dotnet-sdk_7
 
     # nix
     devenv
-
-    # -- Game --
-    lunar-client
 
     # build systems
     criterion
@@ -145,5 +136,9 @@
   environment.variables = {
     ACLOCAL_PATH = "${pkgs.autoconf-archive}/share/aclocal:${pkgs.autoconf}/share/aclocal:${pkgs.automake}/share/aclocal";
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-sdk-7.0.410"
+  ];
 
 }

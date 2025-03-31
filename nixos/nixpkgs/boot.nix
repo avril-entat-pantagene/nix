@@ -27,7 +27,7 @@
     initrd.systemd.enable = true; # Enables systemd services in the initial ramdisk (initrd)
     plymouth = {
       enable = true;
-      theme = "PlTBaptiste1";
+      theme = "plymouthsmoothbrainkitty";
       themePackages = [ pkgs.plytheme ];
     };
 
