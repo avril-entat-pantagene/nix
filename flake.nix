@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     plasma-manager = {
@@ -57,6 +57,7 @@
               home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
 
               home-manager.users.baptiste = import ./home-manager/home.nix;
+              home-manager.backupFileExtension = "backup";
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
             }
@@ -74,6 +75,10 @@
         vivobook_hm = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            inputs.plasma-manager.homeManagerModules.plasma-manager
+            ./home-manager/home.nix
+          ];
         };
       };
     };

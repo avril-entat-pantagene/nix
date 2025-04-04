@@ -46,7 +46,6 @@
       # clickItemTo = "open"; # If you liked the click-to-open default from plasma 5
       # lookAndFeel = "org.kde.breezedark.desktop";
       cursor = {
-        #theme = "Bibata-Modern-Ice";
         size = 18;
       };
       # iconTheme = "Papirus-Dark";
@@ -76,5 +75,4 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  home.enableNixpkgsReleaseCheck = false; # Disable Nixpkgs version warning
 }

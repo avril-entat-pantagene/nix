@@ -13,7 +13,7 @@
   # DOCS https://discourse.nixos.org/t/nix-build-ate-my-ram/35752?u=yajo
   systemd.slices.anti-hungry.sliceConfig = {
     CPUAccounting = true;
-    CPUQuota = "50%";
+    CPUQuota = "70%";
     MemoryAccounting = true; # Allow to control with systemd-cgtop
     MemoryHigh = "50%";
     MemoryMax = "75%";

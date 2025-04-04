@@ -53,6 +53,7 @@
       nx = "nix run nixpkgs#nixVersions.nix_2_25 develop";
       "«" = "cd ../";
       "•" = "ls -A --color=auto";
+      mktmp = "cd $(mktemp -d)";
     };
 
     bashrcExtra = builtins.readFile ./bashrcExtra.sh;

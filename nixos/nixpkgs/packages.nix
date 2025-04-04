@@ -2,7 +2,6 @@
 {
 
   users.users.baptiste.packages = with pkgs; [
-
     vlc
 
     # Fonts
@@ -27,6 +26,7 @@
     gpustat
     htop
     kdePackages.filelight
+    nvtopPackages.full
 
     # tools
     git

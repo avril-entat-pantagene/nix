@@ -86,17 +86,17 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
-  # services = {
-  #   supergfxd.enable = true;
-  #   asusd = {
-  #     enable = true;
-  #     enableUserService = true;
-  #   };
-  # };
+  # nix downlaod buffer size
+  #nix.settings.download-buffer-size = ;
 
   # Enable networking
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
