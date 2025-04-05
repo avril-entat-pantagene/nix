@@ -1,7 +1,7 @@
 {
   description = "A collection of services enabling the users to perform inference on LLM models";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     process-compose-flake.url = "github:Platonic-Systems/process-compose-flake";
@@ -45,7 +45,7 @@
                 # Backend service to perform inference on LLM models
                 ollama."ollama1" = {
                   enable = true;
-                  #acceleration = "cuda";
+                  acceleration = "cuda";
 
                   # The models are usually huge, downloading them in every project
                   # directory can lead to a lot of duplication. Change here to a
@@ -59,7 +59,7 @@
                   # models manually in the UI.
                   #
                   # Search for the models here: https://ollama.com/library
-                  models = [ "phi3" ];
+                  models = [ ];
                 };
 
                 # Get ChatGPT like UI, but open-source, with Open WebUI

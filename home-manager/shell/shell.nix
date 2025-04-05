@@ -45,7 +45,6 @@
     # set some aliases, feel free to add more or remove some
     shellAliases = {
       nrsb = "sudo nixos-rebuild switch --flake .#baptiste";
-      fetch = "fastfetch | dotacat";
       ls = "ls -A --color=auto";
       grep = "grep --color -n";
       gf = "git fetch";
@@ -53,7 +52,6 @@
       nx = "nix run nixpkgs#nixVersions.nix_2_25 develop";
       "«" = "cd ../";
       "•" = "ls -A --color=auto";
-      mktmp = "cd $(mktemp -d)";
     };
 
     bashrcExtra = builtins.readFile ./bashrcExtra.sh;

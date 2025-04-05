@@ -44,6 +44,7 @@ func_pushtag() {
 alias save="func_save"
 alias push="func_GitPush"
 alias mdd="func_pushtag"
+alias mktmp="source mktmp_pkg $@"
 
 # Startup
 #kitten icat --align left /home/baptiste/nix/assets/catboy_small.jpg
