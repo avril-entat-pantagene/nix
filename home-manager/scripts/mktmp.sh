@@ -149,14 +149,14 @@ if [ "$1" = "-n" ]; then
     func_new $2
 
 elif [ "$1" = "-d" ] && [ -n "$2" ]; then
-    read -p "Are you sure you want to delete this symlink? (y/n) " confirm
+    read -p "Are you sure you want to $(tput setaf 124)delete this$(tput sgr0) symlink? ($(tput setaf 124)y$(tput sgr0)/n) " confirm
     if [ "$confirm" = "y" ]; then
         func_delete $@
     fi
     func_clean_up
 
 elif [ "$1" = "-d" ]; then
-    read -p "Are you sure you want to delete all files in the mktmp directory? (y/n) " confirm
+    read -p "Are you sure you want to $(tput setaf 124)delete all$(tput sgr0) files in the mktmp directory? ($(tput setaf 124)y$(tput sgr0)/n) " confirm
     if [ "$confirm" = "y" ]; then
         rm -rf "$HOME/.cache/mktmp"
         mkdir -p "$HOME/.cache/mktmp"
@@ -181,7 +181,7 @@ elif [ "$1" = "-h" ]; then
     func_help
 
 else
-    echo "Invalid option. Use -h for help."
+    echo "$(tput setaf 124)Invalid option. Use $(tput sgr0)-h$(tput setaf 124) for help.$(tput sgr0)"
     func_help
 
 fi
