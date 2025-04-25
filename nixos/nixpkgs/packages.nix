@@ -4,7 +4,7 @@
   users.users.baptiste.packages = with pkgs; [
     vlc
 
-    # Fonts
+    # Fonsts
     nerdfonts
 
     # Paper
@@ -15,6 +15,9 @@
     ganttproject-bin
     gimp
     vim-full
+
+    # LaTeX
+    texliveFull
 
     # Ide
     vscode-fhs
@@ -30,12 +33,13 @@
 
     # tools
     git
+    lazygit
     gh
     unzip
     sl
     ncdu
     usbutils
-    rustdesk
+    xsel
 
     # ACDC
     dotnet-sdk_7
@@ -106,6 +110,8 @@
     clang_multi
     libllvm
     multiStdenv.cc
+    lldb
+    libcxx
 
     # lcov dependencies
     perlPackages.JSON

@@ -42,7 +42,20 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    # set some aliases, feel free to add more or remove some
+    shellAliases = {
+      ls = "ls -A --color=auto";
+      grep = "grep --color -n";
+    };
+
+    bashrcExtra = builtins.readFile ./bashrcExtra.sh;
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
     shellAliases = {
       nrsb = "sudo nixos-rebuild switch --flake .#baptiste";
       ls = "ls -A --color=auto";
@@ -54,7 +67,17 @@
       "•" = "ls -A --color=auto";
     };
 
-    bashrcExtra = builtins.readFile ./bashrcExtra.sh;
+    envExtra = builtins.readFile ./zshrcExtra.sh;
+
+    history.size = 10000;
+    history.ignoreAllDups = true;
+    history.path = "$HOME/.zsh_history";
+    history.ignorePatterns = [
+      "rm *"
+      "pkill *"
+      "cp *"
+    ];
+
   };
 
   programs.starship = {

@@ -33,7 +33,6 @@
     ./nixpkgs/direnv.nix
     ./nixpkgs/gpu.nix
     ./nixpkgs/OOM.nix
-    ./nixpkgs/polkit.nix
 
     # Import home-manager's NixOS module
     #inputs.home-manager.nixosModules.home-manager
@@ -190,6 +189,13 @@
       ];
     };
   };
+
+  programs.zsh = {
+    enable = true;
+  };
+  environment.pathsToLink = [ "/share/zsh" ];
+  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
 
   environment.systemPackages = with pkgs; [
     vim
