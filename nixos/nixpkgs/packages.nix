@@ -47,6 +47,10 @@
     # nix
     devenv
 
+    # Js
+    nodejs_23
+    yarn
+
     # build systems
     criterion
     autoconf

@@ -65,9 +65,11 @@
       nx = "nix run nixpkgs#nixVersions.nix_2_25 develop";
       "«" = "cd ../";
       "•" = "ls -A --color=auto";
+      c = "code .";
+
     };
 
-    envExtra = builtins.readFile ./zshrcExtra.sh;
+    initExtra = builtins.readFile ./zshrcExtra.sh;
 
     history.size = 10000;
     history.ignoreAllDups = true;

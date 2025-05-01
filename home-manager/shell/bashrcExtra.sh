@@ -1,3 +1,1 @@
-if test -t 1; then
-    exec zsh
-fi
+echo "bash, not zsh"

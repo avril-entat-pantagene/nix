@@ -41,12 +41,38 @@ func_pushtag() {
     done
 }
 
+tard() {
+    if [ -f "$1" ]; then
+        tar -xf "$1" && rm -i "$1"
+    else
+        echo "Error: File '$1' does not exist."
+    fi
+}
+_tard() {
+    _files -g '*.tar(.N)|*.tar.gz(.N)|*.tgz(.N)|*.tar.bz2(.N)|*.tbz(.N)|*.tar.xz(.N)|*.txz(.N)'
+}
+compdef _tard tard
+
+mkt() {
+    mkdir -p "$(dirname "$1")" && touch "$1"
+}
+_mkt() {
+    _files -/d
+}
+compdef _mkt mkt
+
 alias save="func_save"
 alias push="func_GitPush"
 alias mdd="func_pushtag"
 alias mktmp="source mktmp_pkg $@"
 
+alias lg=lazygit
+
 # Startup
-#kitten icat --align left /home/baptiste/nix/assets/catboy_small.jpg
+kitten icat --align left /home/baptiste/nix/assets/icons/ian.png
+
+#piscine JS
+export PGDATA="$HOME/postgres_data"
+export PGHOST="/tmp"
 
 eval $(thefuck --alias f)
