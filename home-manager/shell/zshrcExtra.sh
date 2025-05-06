@@ -1,6 +1,6 @@
 #export PS1='$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput setaf 211)!$(tput setaf 6)\W$(tput setaf 211)|$(tput setaf 6)$(git branch --show-current 2>/dev/null) $(tput setaf 33)(^･ω･^)$(tput sgr0)$ '
 
-func_GitPush() {
+push() {
     REMOTES=$@
 
     # If no remotes were passed in, push to all remotes.
@@ -20,17 +20,17 @@ func_GitPush() {
     done
 }
 
-func_save() {
+save() {
     git add -u
     git commit -m'auto save'
-    func_GitPush $@
+    push $@
     while [ $? -eq 128 ]; do
         sleep 0.5
         func_GitPush $@
     done
 }
 
-func_pushtag() {
+mdd() {
     git add -u
     git commit -m"MDD: $1-$(date '+%s'),"
     git tag -ma "$1-$(date '+%s')"
@@ -61,18 +61,12 @@ _mkt() {
 }
 compdef _mkt mkt
 
-alias save="func_save"
-alias push="func_GitPush"
-alias mdd="func_pushtag"
-alias mktmp="source mktmp_pkg $@"
 
+# alias 
+alias mktmp="source mktmp_pkg $@"
 alias lg=lazygit
 
 # Startup
-kitten icat --align left /home/baptiste/nix/assets/icons/ian.png
-
-#piscine JS
-export PGDATA="$HOME/postgres_data"
-export PGHOST="/tmp"
+#kitten icat --align left /home/baptiste/nix/assets/icons/ian.png
 
 eval $(thefuck --alias f)

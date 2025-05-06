@@ -2,6 +2,15 @@
 {
 
   users.users.baptiste.packages = with pkgs; [
+
+    #Gnome
+    gnome-tweaks
+    papirus-icon-theme
+
+    bitwarden-desktop
+
+    google-chrome
+
     vlc
 
     # Fonsts
@@ -15,8 +24,6 @@
     ganttproject-bin
     gimp
     vim-full
-
-    # LaTeX
     texliveFull
 
     # Ide
@@ -37,6 +44,7 @@
     gh
     unzip
     sl
+    lsd
     ncdu
     usbutils
     xsel

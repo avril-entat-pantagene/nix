@@ -4,14 +4,12 @@
   users.users.baptiste.packages = with pkgs-unstable; [
     home-manager
 
-    vesktop
+    #vesktop # Do not work on Gnome
+    discord
 
     # -- Browser --
-    google-chrome
+    
     tor-browser
-
-    # -- Game --
-    lunar-client
   ];
 
 }

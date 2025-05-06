@@ -58,11 +58,11 @@
 
     shellAliases = {
       nrsb = "sudo nixos-rebuild switch --flake .#baptiste";
-      ls = "ls -A --color=auto";
+      ls = "lsd -A --group-dirs first";
+      tree = "lsd --tree";
       grep = "grep --color -n";
       gf = "git fetch";
       gs = "git status && pre-commit";
-      nx = "nix run nixpkgs#nixVersions.nix_2_25 develop";
       "«" = "cd ../";
       "•" = "ls -A --color=auto";
       c = "code .";

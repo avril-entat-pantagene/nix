@@ -33,6 +33,10 @@
     ./nixpkgs/direnv.nix
     ./nixpkgs/gpu.nix
     ./nixpkgs/OOM.nix
+    ./nixpkgs/firefox.nix
+    ./nixpkgs/gnome.nix
+    ./nixpkgs/sound.nix
+    ./nixpkgs/zsh.nix
 
     # Import home-manager's NixOS module
     #inputs.home-manager.nixosModules.home-manager
@@ -93,7 +97,6 @@
     hostName = "nixos";
     networkmanager = {
       enable = true;
-      wifi.powersave = false;
     };
   };
 
@@ -118,60 +121,8 @@
   # Configure console keymap
   console.keyMap = "fr";
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "fr";
-    variant = "oss_nodeadkeys";
-  };
-
-  # GPU fix
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = true;
-    nvidiaSettings = true;
-  };
-  hardware.graphics.enable = true; # Enables graphics support
-
-  hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;
-    };
-
-    # Make sure to use the correct Bus ID values for your system!
-    nvidiaBusId = "PCI:1:0:0";
-    amdgpuBusId = "PCI:4:0:0";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.settings = {
-    General = {
-      Enable = "Source,Sink,Media,Socket";
-      Experimental = true;
-    };
-  };
 
   users.users = {
     baptiste = {
@@ -190,19 +141,16 @@
     };
   };
 
-  programs.zsh = {
-    enable = true;
-  };
-  environment.pathsToLink = [ "/share/zsh" ];
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
-
   environment.systemPackages = with pkgs; [
     vim
     wget
     tree
     git
   ];
+
+  services.fprintd = {
+    enable = true;
+  };
 
   # --------------------------------------------------------------
   # This value determines the NixOS release from which the default
