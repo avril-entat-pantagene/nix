@@ -1,0 +1,21 @@
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+    imports = [
+      ./boot.nix
+      ./steam.nix
+      ./docker.nix
+      ./direnv.nix
+      ./gpu.nix
+      ./OOM.nix
+      ./firefox.nix
+      ./gnome.nix
+      ./sound.nix
+      ./zsh.nix
+      ./latex.nix
+    ];
+}

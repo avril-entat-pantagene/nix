@@ -23,21 +23,8 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-
-    ./nixpkgs/boot.nix
-    ./nixpkgs/packages.nix
-    ./nixpkgs/packages-unstable.nix
-    ./nixpkgs/steam.nix
-    ./nixpkgs/docker.nix
-    ./nixpkgs/direnv.nix
-    ./nixpkgs/gpu.nix
-    ./nixpkgs/OOM.nix
-    ./nixpkgs/firefox.nix
-    ./nixpkgs/gnome.nix
-    ./nixpkgs/sound.nix
-    ./nixpkgs/zsh.nix
-    ./nixpkgs/latex.nix
-
+    ./component/default.nix
+    ./pkgs/default.nix
     # Import home-manager's NixOS module
     #inputs.home-manager.nixosModules.home-manager
   ];
