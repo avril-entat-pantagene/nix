@@ -13,8 +13,8 @@
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "baptiste";
-  home.homeDirectory = "/home/baptiste";
+  home.username = "avril";
+  home.homeDirectory = "/home/avril";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -54,7 +54,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/baptiste/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/avril/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     EDITOR = "vim";

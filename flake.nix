@@ -1,5 +1,5 @@
 {
-  description = "Baptiste perso nixos config";
+  description = "Avril perso nixos config";
 
   inputs = {
     # Nixpkgs
@@ -30,10 +30,10 @@
     in
     {
       # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild switch --flake .#baptiste'
+      # Available through 'nixos-rebuild switch --flake .#avril'
       nixosConfigurations = {
 
-        baptiste = nixpkgs.lib.nixosSystem rec {
+        avril = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
@@ -56,7 +56,7 @@
               home-manager.useUserPackages = true;
               home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
 
-              home-manager.users.baptiste = import ./home-manager/home.nix;
+              home-manager.users.avril = import ./home-manager/home.nix;
               home-manager.backupFileExtension = "backup";
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix

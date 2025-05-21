@@ -1,11 +1,6 @@
 { pkgs, lib, ... }:
 {
-
-  users.users.baptiste.packages = with pkgs; [
-
-    #Gnome
-    gnome-tweaks
-    papirus-icon-theme
+  users.users.avril.packages = with pkgs; [
 
     bitwarden-desktop
 
@@ -14,7 +9,7 @@
     vlc
 
     # Fonsts
-    nerdfonts
+    #nerdfonts
 
     # Paper
     bc
@@ -24,10 +19,11 @@
     ganttproject-bin
     gimp
     vim-full
-    texliveFull
+    #texliveFull
 
     # Ide
     vscode-fhs
+    vscodium-fhs
     kdePackages.kate
     jetbrains-toolbox
 
@@ -56,7 +52,7 @@
     devenv
 
     # Js
-    nodejs_23
+    nodejs_22
     yarn
 
     # build systems
@@ -146,6 +142,8 @@
 
     xdot
     nixfmt-rfc-style
+
+    nerdfonts
 
   ];
 

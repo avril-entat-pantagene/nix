@@ -24,7 +24,6 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
-    #./nixpkgs/zsh.nix
     ./nixpkgs/boot.nix
     ./nixpkgs/packages.nix
     ./nixpkgs/packages-unstable.nix
@@ -37,6 +36,7 @@
     ./nixpkgs/gnome.nix
     ./nixpkgs/sound.nix
     ./nixpkgs/zsh.nix
+    ./nixpkgs/latex.nix
 
     # Import home-manager's NixOS module
     #inputs.home-manager.nixosModules.home-manager
@@ -125,9 +125,9 @@
   services.printing.enable = true;
 
   users.users = {
-    baptiste = {
+    avril = {
       isNormalUser = true;
-      description = "Baptiste ENTAT-PANTAGENE";
+      description = "Avril ENTAT-PANTAGENE";
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
@@ -146,6 +146,7 @@
     wget
     tree
     git
+    fprintd
   ];
 
   services.fprintd = {
