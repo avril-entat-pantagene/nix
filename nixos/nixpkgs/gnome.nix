@@ -7,7 +7,8 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    desktopManager.gnome.enable = true;  
+    #desktopManager.cinnamon.enable = true;
 
     # Configure keymap in X11
     xkb = {
@@ -17,16 +18,20 @@
 
   };
 
+  users.users.avril.packages = with pkgs; [
+
+    #Gnome
+    gnome-tweaks
+    
+  ];
+
   environment.systemPackages = with pkgs; [
+    papirus-icon-theme
+    bibata-cursors
+
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-panel
     gnomeExtensions.clipboard-indicator
   ];
 
-  programs.kdeconnect = {
-    enable = true;
-    package = pkgs.gnomeExtensions.gsconnect;
-  };
-
-  services.udev.packages = [ pkgs.gnome-settings-daemon ];
 }

@@ -1,4 +1,4 @@
 # nix
 
 ## use
-`nixos-rebuild switch --flake .#baptiste`
+`nixos-rebuild switch --flake .#avril`

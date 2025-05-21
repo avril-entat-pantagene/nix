@@ -57,7 +57,8 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      nrsb = "sudo nixos-rebuild switch --flake .#baptiste";
+      nrsa = "sudo nixos-rebuild switch --flake .#avril";
+      nrba = "sudo nixos-rebuild boot --flake .#avril";
       ls = "lsd -A --group-dirs first";
       tree = "lsd --tree";
       grep = "grep --color -n";
@@ -69,7 +70,7 @@
 
     };
 
-    initExtra = builtins.readFile ./zshrcExtra.sh;
+    initExtra = builtins.readFile ./zshInitContent.sh;
 
     history.size = 10000;
     history.ignoreAllDups = true;
@@ -86,12 +87,18 @@
     enable = true;
     # Configuration écrite dans ~/.config/starship.toml
     settings = {
-      add_newline = false;
+      add_newline = true;
       character = {
         success_symbol = "[➜](bold green)";
         error_symbol = "[➜](bold red)";
       };
       # package.disabled = true;
+      username = {
+        disabled = false;
+        show_always = true;
+        style_user = "white bold";
+        format = "[$user]($style) ";
+      };
       sudo = {
         disabled = false;
         symbol = "👑 ";

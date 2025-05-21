@@ -61,12 +61,11 @@ _mkt() {
 }
 compdef _mkt mkt
 
-
-# alias 
+# alias
 alias mktmp="source mktmp_pkg $@"
 alias lg=lazygit
 
 # Startup
-#kitten icat --align left /home/baptiste/nix/assets/icons/ian.png
+#kitten icat --align left /home/avril/nix/assets/icons/ian.png
 
 eval $(thefuck --alias f)
