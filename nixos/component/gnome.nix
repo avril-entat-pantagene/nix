@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -7,7 +8,7 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;  
+    desktopManager.gnome.enable = true;
     #desktopManager.cinnamon.enable = true;
 
     # Configure keymap in X11
@@ -19,11 +20,18 @@
   };
 
   users.users.avril.packages = with pkgs; [
-
     #Gnome
     gnome-tweaks
-    
+
   ];
+
+  fonts = {
+    enableDefaultPackages = true;
+    packages = [
+      pkgs.corefonts
+      pkgs.vista-fonts
+    ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  };
 
   environment.systemPackages = with pkgs; [
     papirus-icon-theme
@@ -32,6 +40,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-panel
     gnomeExtensions.clipboard-indicator
+    gnomeExtensions.vitals
   ];
 
 }
