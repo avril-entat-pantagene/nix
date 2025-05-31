@@ -1,7 +1,7 @@
 { ... }:
 {
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -9,11 +9,15 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.settings = {
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
     General = {
       Enable = "Source,Sink,Media,Socket";
       Experimental = true;
     };
+  };
   };
 }

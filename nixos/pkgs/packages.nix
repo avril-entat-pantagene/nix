@@ -8,6 +8,16 @@
 
     vlc
 
+    #FABOC
+    arduino-ide
+    renode
+
+    #PPARAL
+    cmake
+    gbenchmark
+    tbb
+    SDL2
+
     # Fonsts
     #nerdfonts
 
@@ -26,6 +36,8 @@
     vscodium-fhs
     kdePackages.kate
     jetbrains-toolbox
+    
+    
 
     # Stat
     mission-center
@@ -142,8 +154,6 @@
 
     xdot
     nixfmt-rfc-style
-
-    nerdfonts
 
   ];
 

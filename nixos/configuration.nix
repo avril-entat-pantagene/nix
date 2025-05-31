@@ -124,6 +124,7 @@
         "audio"
         "plugdev"
         "docker"
+        "dialout" # For arduino communication
       ];
     };
   };

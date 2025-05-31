@@ -70,7 +70,7 @@
 
     };
 
-    initExtra = builtins.readFile ./zshInitContent.sh;
+    initContent = builtins.readFile ./zshInitContent.sh;
 
     history.size = 10000;
     history.ignoreAllDups = true;
