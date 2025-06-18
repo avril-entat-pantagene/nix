@@ -9,11 +9,6 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
 
   outputs =
@@ -22,7 +17,6 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      plasma-manager,
       ...
     }@inputs:
     let
@@ -54,7 +48,6 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
 
               home-manager.users.avril = import ./home-manager/home.nix;
               home-manager.backupFileExtension = "backup";
@@ -76,7 +69,6 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
-            inputs.plasma-manager.homeManagerModules.plasma-manager
             ./home-manager/home.nix
           ];
         };

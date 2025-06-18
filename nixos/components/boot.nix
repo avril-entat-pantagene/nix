@@ -11,7 +11,11 @@
   nixpkgs.config.packageOverrides = pkgs: rec {
     plytheme = pkgs.callPackage ./plymouth/PlyTheme.nix { };
   };
-  environment.systemPackages = with pkgs; [ plytheme ];
+
+  environment.systemPackages = with pkgs; [
+    plytheme
+    alsa-utils
+  ];
 
   # Bootloader
   boot = {
@@ -48,5 +52,4 @@
     ];
 
   };
-
 }
