@@ -19,14 +19,9 @@
     # inputs.hardware.nixosModules.common-ssd
 
     # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-    ./component/default.nix
+    ./components/default.nix
     ./pkgs/default.nix
-    # Import home-manager's NixOS module
-    #inputs.home-manager.nixosModules.home-manager
   ];
 
   nixpkgs = {
@@ -63,21 +58,12 @@
       settings = {
         # Enable flakes and new 'nix' command
         experimental-features = "nix-command flakes";
-        # Opinionated: disable global registry
-        #flake-registry = "";
-        ## Workaround for https://github.com/NixOS/nix/issues/9574
-        #nix-path = config.nix.nixPath;
       };
-      # Opinionated: disable channels
-      #channel.enable = false;
 
       # Opinionated: make flake registry and nix path match flake inputs
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
-
-  # nix downlaod buffer size
-  #nix.settings.download-buffer-size = ;
 
   # Enable networking
   networking = {
@@ -119,8 +105,8 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       extraGroups = [
-        "networkmanager"
         "wheel"
+        "networkmanager"
         "audio"
         "plugdev"
         "docker"
@@ -134,12 +120,7 @@
     wget
     tree
     git
-    fprintd
   ];
-
-  services.fprintd = {
-    enable = true;
-  };
 
   # --------------------------------------------------------------
   # This value determines the NixOS release from which the default

@@ -9,7 +9,6 @@
     enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    #desktopManager.cinnamon.enable = true;
 
     # Configure keymap in X11
     xkb = {
@@ -20,7 +19,6 @@
   };
 
   users.users.avril.packages = with pkgs; [
-    #Gnome
     gnome-tweaks
 
   ];

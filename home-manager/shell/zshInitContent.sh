@@ -1,4 +1,4 @@
-#export PS1='$(tput setaf 6)$(($(ps|wc -l) - 4))$(tput setaf 211)!$(tput setaf 6)\W$(tput setaf 211)|$(tput setaf 6)$(git branch --show-current 2>/dev/null) $(tput setaf 33)(^･ω･^)$(tput sgr0)$ '
+# ZSH configuration file
 
 push() {
     REMOTES=$@
@@ -61,11 +61,35 @@ _mkt() {
 }
 compdef _mkt mkt
 
+
+# bindkey #
+### ctrl+arrows
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+# urxvt
+bindkey "\eOc" forward-word
+bindkey "\eOd" backward-word
+
+### ctrl+delete
+bindkey "\e[3;5~" kill-word
+# urxvt
+bindkey "\e[3^" kill-word
+
+### ctrl+backspace
+bindkey '^H' backward-kill-word
+
+### ctrl+shift+delete
+bindkey "\e[3;6~" kill-line
+# urxvt
+bindkey "\e[3@" kill-line
+
+### run code when selected completion
+bindkey -M menuselect '^M' .accept-line
+
 # alias
 alias mktmp="source mktmp_pkg $@"
-alias lg=lazygit
 
-# Startup
-#kitten icat --align left /home/avril/nix/assets/icons/ian.png
-
-eval $(thefuck --alias f)
+#JWS
+export PGDATA="$HOME/postgres_data"
+export PGHOST="/tmp"
+export PGPORT="5432"

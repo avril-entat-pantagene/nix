@@ -2,15 +2,15 @@
 {
   users.users.avril.packages = with pkgs; [
 
+    home-manager
     bitwarden-desktop
-
-    google-chrome
-
+    discord
     vlc
+    tor-browser
+    google-chrome
 
     #FABOC
     arduino-ide
-    renode
 
     #PPARAL
     cmake
@@ -18,54 +18,55 @@
     tbb
     SDL2
 
-    # Fonsts
-    #nerdfonts
-
     # Paper
     bc
     krita
     libreoffice
-    zim
-    ganttproject-bin
     gimp
     vim-full
-    #texliveFull
+    kdePackages.kate
+    texlive.combined.scheme-full
 
     # Ide
     vscode-fhs
-    vscodium-fhs
-    kdePackages.kate
     jetbrains-toolbox
-    
-    
 
     # Stat
-    mission-center
     gpustat
     htop
     kdePackages.filelight
-    nvtopPackages.full
 
     # tools
     git
     lazygit
-    gh
     unzip
     sl
     lsd
+    zoxide
     ncdu
     usbutils
     xsel
+    xdot
+    nixfmt-rfc-style
 
     # ACDC
     dotnet-sdk_7
-
-    # nix
-    devenv
+    dotnet-aspnetcore_7
+    dotnet-runtime_7
+    dotnetCorePackages.sdk_7_0_3xx-bin
+    dotnetCorePackages.sdk_8_0-bin
 
     # Js
     nodejs_22
     yarn
+
+    # Java
+    maven
+    jdk21_headless
+
+    #SQL
+    postgresql
+    
 
     # build systems
     criterion
@@ -152,8 +153,31 @@
     vpcs
     aria2
 
-    xdot
-    nixfmt-rfc-style
+    # rust
+    rustc
+    rustup
+    rustfmt
+
+    (jetbrains.rider.overrideAttrs (attrs: {
+      postInstall =
+        (attrs.postInstall or "")
+        + lib.optionalString (stdenv.hostPlatform.isLinux) ''
+          (
+            cd $out/rider
+
+            ls -d $PWD/plugins/cidr-debugger-plugin/bin/lldb/linux/*/lib/python3.8/lib-dynload/* |
+            xargs patchelf \
+              --replace-needed libssl.so.10 libssl.so \
+              --replace-needed libcrypto.so.10 libcrypto.so \
+              --replace-needed libcrypt.so.1 libcrypt.so
+
+            for dir in lib/ReSharperHost/linux-*; do
+              rm -rf $dir/dotnet
+              ln -s ${dotnet-sdk_7.unwrapped}/share/dotnet $dir/dotnet 
+            done
+          )
+        '';
+    }))
 
   ];
 
@@ -165,6 +189,9 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-sdk-7.0.410"
+    "aspnetcore-runtime-7.0.20"
+    "dotnet-runtime-7.0.20"
+    "dotnet-sdk-7.0.317"
   ];
 
 }

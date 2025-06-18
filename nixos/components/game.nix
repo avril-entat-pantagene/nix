@@ -9,4 +9,11 @@
       localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     };
   };
+
+  users.users.avril.packages = with pkgs; [
+    #retroarch-full
+    heroic
+
+  ];
+
 }
