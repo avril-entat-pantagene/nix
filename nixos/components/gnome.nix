@@ -4,24 +4,10 @@
   ...
 }:
 {
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-
-    # Configure keymap in X11
-    xkb = {
-      layout = "fr";
-      variant = "oss_nodeadkeys";
-    };
-
-  };
-
-  users.users.avril.packages = with pkgs; [
-    gnome-tweaks
-
-  ];
+  services.xserver.enable = true; # optional
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   fonts = {
     enableDefaultPackages = true;
@@ -34,11 +20,6 @@
   environment.systemPackages = with pkgs; [
     papirus-icon-theme
     bibata-cursors
-
-    gnomeExtensions.appindicator
-    gnomeExtensions.dash-to-panel
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.vitals
   ];
 
 }
