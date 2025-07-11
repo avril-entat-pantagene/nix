@@ -9,10 +9,6 @@
     tor-browser
     google-chrome
 
-    #FABOC
-    arduino-ide
-
-    #PPARAL
     cmake
     gbenchmark
     tbb
@@ -26,6 +22,7 @@
     vim-full
     kdePackages.kate
     texlive.combined.scheme-full
+    onlyoffice-desktopeditors
 
     # Ide
     vscode-fhs
@@ -43,11 +40,13 @@
     sl
     lsd
     zoxide
+    bat
     ncdu
     usbutils
     xsel
     xdot
     nixfmt-rfc-style
+    gcolor3
 
     # ACDC
     dotnet-sdk_7
@@ -66,7 +65,6 @@
 
     #SQL
     postgresql
-    
 
     # build systems
     criterion

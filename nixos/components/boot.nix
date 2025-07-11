@@ -14,7 +14,6 @@
 
   environment.systemPackages = with pkgs; [
     plytheme
-    alsa-utils
   ];
 
   # Bootloader
@@ -28,7 +27,11 @@
     };
     tmp.cleanOnBoot = true; # Clear /tmp during boot
 
-    initrd.systemd.enable = true; # Enables systemd services in the initial ramdisk (initrd)
+    initrd = {
+      verbose = false;
+      systemd.enable = true; # Enables systemd services in the initial ramdisk (initrd)
+    };
+
     plymouth = {
       enable = true;
       theme = "plymouthsmoothbrainkitty";
@@ -37,7 +40,6 @@
 
     # Enable "Silent Boot"
     consoleLogLevel = 0;
-    initrd.verbose = false;
     kernelParams = [
       "plymouth.use-simpledrm" # fix for this pc !
       "quiet"
@@ -52,4 +54,7 @@
     ];
 
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
+
 }

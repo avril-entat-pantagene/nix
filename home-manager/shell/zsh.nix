@@ -60,6 +60,7 @@
       "•" = "ls";
       tree = "lsd --tree";
       grep = "grep --color -n";
+      cat = "bat";
 
       gf = "git fetch";
       gs = "git status && pre-commit";
