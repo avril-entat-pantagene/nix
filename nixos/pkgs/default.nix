@@ -5,8 +5,11 @@
   ...
 }:
 {
-    imports = [
-      ./packages.nix
-      ./packages-unstable.nix
-    ];
+  imports = [
+    ./dev/default.nix
+    ./packages.nix
+    ./packages-unstable.nix
+    ./tools.nix
+    ./paper.nix
+  ];
 }

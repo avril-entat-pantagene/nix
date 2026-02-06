@@ -58,6 +58,8 @@
       settings = {
         # Enable flakes and new 'nix' command
         experimental-features = "nix-command flakes";
+
+        trusted-users = [ "@wheel" ];
       };
 
       # Opinionated: make flake registry and nix path match flake inputs
@@ -110,7 +112,6 @@
         "audio"
         "plugdev"
         "docker"
-        "dialout" # For arduino communication
       ];
     };
   };
