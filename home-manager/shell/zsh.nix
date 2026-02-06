@@ -24,7 +24,6 @@
       enable = true;
       plugins = [
         "zoxide"
-        "thefuck"
       ];
       extraConfig = ''
         setopt HIST_FIND_NO_DUPS
