@@ -20,7 +20,6 @@
 
     pkgs.dotacat
     pkgs.fastfetch
-    pkgs.thefuck
     pkgs.zsh-autocomplete
 
     (pkgs.writeShellScriptBin "fetch" (builtins.readFile ./scripts/fetch.sh))
