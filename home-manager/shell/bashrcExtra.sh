@@ -10,11 +10,4 @@ alias lg="lazygit"
 alias c="code ."
 alias mktmp="source mktmp_pkg $@"
 
-
-#JWS
-export PGDATA="$HOME/postgres_data"
-export PGHOST="/tmp"
-export PGPORT="5432"
-
-eval $(thefuck --alias f)
 eval "$(zoxide init bash)"

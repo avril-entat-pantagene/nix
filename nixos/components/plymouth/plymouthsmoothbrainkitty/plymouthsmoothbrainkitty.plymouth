@@ -1,0 +1,15 @@
+[Plymouth Theme]
+Name=plymouthsmoothbrainkitty
+Description=Baptiste ENTAT-PANTAGENE from EPITA
+Comment=Created by Baptiste 
+ModuleName=script
+
+
+[script]
+ImageDir=@ROOT@
+ScriptFile=@ROOT@plymouthsmoothbrainkitty.script
+
+
+
+
+

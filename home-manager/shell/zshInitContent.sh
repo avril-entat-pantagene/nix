@@ -88,8 +88,3 @@ bindkey -M menuselect '^M' .accept-line
 
 # alias
 alias mktmp="source mktmp_pkg $@"
-
-#JWS
-export PGDATA="$HOME/postgres_data"
-export PGHOST="/tmp"
-export PGPORT="5432"

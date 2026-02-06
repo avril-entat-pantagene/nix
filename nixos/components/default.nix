@@ -13,7 +13,7 @@
     ./gpu.nix
     ./OOM.nix
     ./firefox.nix
-    ./gnome.nix
+    ./displayManager.nix
     ./sound.nix
     ./zsh.nix
     ./garbage-collection.nix

@@ -2,7 +2,8 @@
 {
 
   users.users.avril.packages = with pkgs-unstable; [
-
+    act
+    antigravity-fhs
   ];
 
 }

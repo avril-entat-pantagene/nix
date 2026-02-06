@@ -24,7 +24,6 @@
       enable = true;
       plugins = [
         "zoxide"
-        "thefuck"
       ];
       extraConfig = ''
         setopt HIST_FIND_NO_DUPS
@@ -52,9 +51,9 @@
     shellAliases = {
       "cd" = "z";
 
-      update = "nix flake update && sudo nixos-rebuild boot --flake .#avril";
-      nrsa = "sudo nixos-rebuild switch --flake .#avril";
-      nrba = "sudo nixos-rebuild boot --flake .#avril";
+      update = "sudo ls > /dev/null && nix flake update && sudo nixos-rebuild boot --flake .#avril |& nom";
+      nrsa = "sudo ls > /dev/null && sudo nixos-rebuild switch --flake .#avril |& nom";
+      nrba = "sudo ls > /dev/null && sudo nixos-rebuild boot --flake .#avril |& nom";
 
       ls = "lsd -A --group-dirs first";
       "•" = "ls";

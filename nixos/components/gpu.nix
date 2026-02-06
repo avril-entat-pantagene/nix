@@ -44,5 +44,6 @@ in
   # App launch fix
   environment.systemPackages = with pkgs; [
     (GPUOffloadApp steam "steam")
+    #(GPUOffloadApp prismlauncher "prismlauncher")
   ];
 }
