@@ -1,8 +1,8 @@
 { stdenv, fetchurl }:
 stdenv.mkDerivation rec {
-  pname = "plymouthsmoothbrainkitty";
+  pname = "avrilos";
   version = "1.0";
-  src = ./plymouthsmoothbrainkitty.tar.gz;
+  src = ./avrilos.tar.gz;
 
   dontConfigure = true;
   dontBuild = true;
@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
 
     mkdir -p $out/share/plymouth/themes/
     tar -xvf $src -C $out/share/plymouth/themes/
-    substituteInPlace $out/share/plymouth/themes/plymouthsmoothbrainkitty/*.plymouth --replace '@ROOT@' "$out/share/plymouth/themes/plymouthsmoothbrainkitty/"
+    substituteInPlace $out/share/plymouth/themes/avrilos/*.plymouth --replace '@ROOT@' "$out/share/plymouth/themes/avrilos/"
 
     runHook postInstall
   '';

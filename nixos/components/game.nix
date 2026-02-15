@@ -12,7 +12,7 @@
 
   users.users.avril.packages = with pkgs; [
     #retroarch-full
-    heroic
+    #heroic
 
   ];
 
