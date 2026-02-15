@@ -34,7 +34,7 @@
 
     plymouth = {
       enable = true;
-      theme = "plymouthsmoothbrainkitty";
+      theme = "avrilos";
       themePackages = [ pkgs.plytheme ];
     };
 

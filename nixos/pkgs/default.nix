@@ -8,5 +8,7 @@
     imports = [
       ./packages.nix
       ./packages-unstable.nix
+
+      ./gistre.nix
     ];
 }
