@@ -1,9 +1,23 @@
 { pkgs, ... }:
 {
-  virtualisation.docker.enable = true;
-  virtualisation.docker.rootless = {
+
+  # Docker
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
+    enableOnBoot = false;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
-  hardware.nvidia-container-toolkit.enable = true;
+
+  # Libvirtd
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    onBoot = "ignore";
+    qemu = {
+      swtpm.enable = true;
+    };
+  };
 }

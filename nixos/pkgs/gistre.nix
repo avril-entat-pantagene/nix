@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
 
-  services.udev.packages = [ pkgs.usb-blaster-udev-rules ];
+  services.udev.packages = [ pkgs.usb-blaster-udev-rules pkgs.stlink pkgs.cdrtools pkgs.dvdplusrwtools ];
 
   environment.systemPackages = with pkgs; [
     # Serial
@@ -15,6 +15,14 @@
 
     # Elec
     kicad
+
+    # STM32
+    stm32cubemx
+    stlink
+    stlink-gui
+    stlink-server
+    gcc
+    gdb
   ];
 
   # IOT
@@ -35,6 +43,12 @@
     qemu = {
       swtpm.enable = true;
     };
+  };
+
+  programs.stm32cubeide = {
+    enable = true;
+    # Optional: disable J-Link rules if you don't use SEGGER probes
+    # enableJlink = false;
   };
 
 }

@@ -46,3 +46,32 @@ in
     (GPUOffloadApp steam "steam")
   ];
 }
+
+/*
+// GISTRE - mettre ça à la place de ma config si j'ai des bugs...
+{
+  boot = {
+    blacklistedKernelModules = [
+      "nouveau"
+      "nova_core"
+    ];
+    kernelModules = [
+      "nvidia"
+      "nvidia_drm"
+    ];
+  };
+
+  hardware = {
+    graphics.enable = true;
+    nvidia = {
+      dynamicBoost.enable = true;
+      modesetting.enable = true;
+      open = true;
+    };
+  };
+
+  services.xserver.videoDrivers = [
+    "nvidia"
+  ];
+}
+*/
