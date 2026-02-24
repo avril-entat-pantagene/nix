@@ -111,15 +111,19 @@
         "plugdev"
         "docker"
         "dialout" # For arduino communication
+        "plugdev" # STM32
       ];
     };
   };
+
+  hardware.probe-rs.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
     wget
     tree
     git
+    cryptsetup
   ];
 
   # --------------------------------------------------------------

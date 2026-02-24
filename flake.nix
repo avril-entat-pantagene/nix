@@ -9,6 +9,9 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stm32cubeide.url = "path:./gistre/stm32cubeIde";
+    stlink-server.url = "path:./gistre/stlink";
+    probe-rs-rules.url = "github:jneem/probe-rs-rules";
   };
 
   outputs =
@@ -17,6 +20,9 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      stm32cubeide,
+      stlink-server,
+      probe-rs-rules,
       ...
     }@inputs:
     let
@@ -54,6 +60,10 @@
 
               # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
             }
+
+            stm32cubeide.nixosModules.default
+            { nixpkgs.overlays = [ stlink-server.overlays.default ]; }
+            probe-rs-rules.nixosModules."x86_64-linux".default # STM32
           ];
         };
 
