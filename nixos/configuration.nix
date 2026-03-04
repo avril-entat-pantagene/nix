@@ -123,8 +123,11 @@
     wget
     tree
     git
-    cryptsetup
+    man-pages
+    man-pages-posix
   ];
+
+  documentation.dev.enable = true;
 
   # --------------------------------------------------------------
   # This value determines the NixOS release from which the default
