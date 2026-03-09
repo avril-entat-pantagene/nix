@@ -10,5 +10,6 @@
       ./packages-unstable.nix
 
       ./gistre.nix
+      ./info8.nix
     ];
 }
