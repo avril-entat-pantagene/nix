@@ -23,6 +23,7 @@
     stlink-server
     gcc
     gdb
+    cmake
   ];
 
   # IOT

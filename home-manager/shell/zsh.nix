@@ -64,8 +64,11 @@
       gf = "git fetch";
       gs = "git status && pre-commit";
       lg = "lazygit";
+      aled = "eval \"$(ssh-agent -s)\" && ssh-add /home/avril/.ssh/id_ed25519_aled";
 
       c = "code .";
+
+      afk = "nix run nixpkgs#asciiquarium-transparent";
     };
 
     initContent = builtins.readFile ./zshInitContent.sh;
