@@ -71,5 +71,5 @@ in
     enable = true;
     package = pkgs.jdk;
   };
-  
+
 }
