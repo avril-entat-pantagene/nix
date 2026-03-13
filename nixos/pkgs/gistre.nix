@@ -24,6 +24,9 @@
     gcc
     gdb
     cmake
+
+    # Others
+    python314
   ];
 
   # IOT
