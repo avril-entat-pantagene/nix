@@ -20,7 +20,6 @@
 
     # Ide
     vscode-fhs
-    jetbrains-toolbox
 
     # Stat
     gpustat
