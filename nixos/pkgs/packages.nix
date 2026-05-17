@@ -5,6 +5,7 @@
     home-manager
     bitwarden-desktop
     vesktop
+    element-desktop
     vlc
 
     # Paper
