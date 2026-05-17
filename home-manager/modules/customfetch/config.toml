@@ -36,11 +36,11 @@ layout = [
     "System Infos ━━━━━━━━━━━━━━━━┫    ${magenta}CPU -> $<cpu.name> ($<cpu.nproc>) @ $<cpu.freq.max>GHz  ┃",
     "                             ┃    ${blue}GPU -> $<gpu>                      ┃",
     "                             ┃    ${!#03ff93}RAM usage -> $<ram>                    ┃",
+    "                             ┃    ${!#03ff93}Swap usage -> $<swap>                  ┃",
+    "                             ┃    ${green}Baterry -> $<battery>                             ┃",
     "                             ┃                                                                  ┃",
     "                             ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛",
     "",
-    "$<colors>",                                                                                # normal colors
-    "$<colors.light>",                                                                          # light colors
 ]
 
 # display ascii-art or image/gif (GUI only) near layout
