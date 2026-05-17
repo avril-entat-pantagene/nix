@@ -1,17 +1,24 @@
 { pkgs, lib, ... }:
 {
 
-  services.udev.packages = [ pkgs.usb-blaster-udev-rules pkgs.stlink pkgs.cdrtools pkgs.dvdplusrwtools ];
+  services.udev.packages = [
+    pkgs.usb-blaster-udev-rules
+    pkgs.stlink
+    pkgs.cdrtools
+    pkgs.dvdplusrwtools
+  ];
+
+  hardware.saleae-logic.enable = true;
 
   environment.systemPackages = with pkgs; [
     # Serial
-    pkgs.screen
+    minicom
+    screen
 
     # Embedded
     arduino
     arduino-cli
     arduino-ide
-    saleae-logic-2
 
     # Elec
     kicad
@@ -27,7 +34,23 @@
 
     # Others
     python314
+
+    # VHDL
+    ghdl-llvm
+    surfer
+    (quartus-prime-lite.override {
+      supportedDevices = [
+        "Cyclone V"
+        "MAX 10 FPGA"
+      ];
+    })
   ];
+
+  # quartus-prime-lite
+  environment.variables = {
+    LM_LICENSE_FILE = "/home/avril/nix/licences/LR-157058_License.dat";
+    MGLS_LICENSE_FILE = "/home/avril/nix/licences/LR-157058_License.dat";
+  };
 
   # IOT
   services = {

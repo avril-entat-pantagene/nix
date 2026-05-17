@@ -9,14 +9,9 @@
 
     # Paper
     bc
-    krita
-    libreoffice
-    gimp
     vim-full
-    kdePackages.kate
     onlyoffice-desktopeditors
     teams-for-linux
-    bitwarden-cli
 
     # Ide
     vscode-fhs

@@ -108,7 +108,6 @@
         "wheel"
         "networkmanager"
         "audio"
-        "plugdev"
         "docker"
         "dialout" # For arduino communication
         "plugdev" # STM32

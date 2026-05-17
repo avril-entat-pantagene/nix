@@ -3,6 +3,9 @@
 
   users.users.avril.packages = with pkgs-unstable; [
     gitlab-ci-local
+    saleae-logic-2
+    signal-desktop
+    darktable
   ];
 
 }

@@ -22,7 +22,6 @@
     pkgs.fastfetch
     pkgs.zsh-autocomplete
 
-    (pkgs.writeShellScriptBin "fetch" (builtins.readFile ./scripts/fetch.sh))
     (pkgs.writeShellScriptBin "mktmp_pkg" (builtins.readFile ./scripts/mktmp.sh))
   ];
 }
