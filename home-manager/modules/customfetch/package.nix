@@ -12,5 +12,5 @@ in
 
   # 2. On génère le fichier de configuration du thème dans .config/customfetch/config.toml
   xdg.configFile."customfetch/config.toml".source = ./config.toml;
-  xdg.configFile."customfetch/boykisser.txt".source = ./boykisser.txt;
+  xdg.configFile."customfetch/logo.txt".source = ./logo.txt;
 }
